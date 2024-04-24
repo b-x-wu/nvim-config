@@ -1,4 +1,5 @@
 require('remap')
+require('plugins')
 
 vim.cmd.colorscheme("catppuccin-frappe")
 vim.opt.number = true
