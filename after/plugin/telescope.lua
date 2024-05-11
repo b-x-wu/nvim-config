@@ -2,7 +2,9 @@ local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 local utils = require('telescope.utils')
 
-vim.keymap.set('n', '<leader>ps', builtin.grep_string, {})
+vim.keymap.set('n', '<leader>ps', function()
+    builtin.live_grep({ search = '' })
+end, {})
 
 vim.keymap.set('n', '<leader>pf', function()
 	local _, ret, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
