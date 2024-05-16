@@ -2,6 +2,7 @@ local lsp = require('lsp-zero')
 local lspconfig = require('lspconfig')
 local mason = require("mason")
 local masonconfig = require("mason-lspconfig")
+local cmp = require("cmp")
 
 mason.setup()
 
@@ -62,6 +63,7 @@ lsp.on_attach(function(client, bufnr)
         noremap = true,
     })
 
+    -- set up jump to definition
     if (client.supports_method('textDocument/definition')) then
         vim.keymap.set('n', '<leader>def', function()
             vim.cmd('vsplit')
@@ -72,8 +74,26 @@ lsp.on_attach(function(client, bufnr)
         })
     end
 
+
+    -- set up renaming
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {
+        buffer = bufnr,
+        noremap = true,
+    })
+
+
     -- set up linting
     setupLint(client, bufnr)
 end)
 
 lsp.setup()
+
+cmp.setup({
+    mapping = {
+        ['<C-Space>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        })
+    },
+})
+
