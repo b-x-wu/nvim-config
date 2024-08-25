@@ -2,7 +2,6 @@ local lsp = require('lsp-zero')
 local lspconfig = require('lspconfig')
 local mason = require("mason")
 local masonconfig = require("mason-lspconfig")
-local cmp = require("cmp")
 
 mason.setup()
 
@@ -87,13 +86,4 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
-
-cmp.setup({
-    mapping = {
-        ['<C-Space>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        })
-    },
-})
 

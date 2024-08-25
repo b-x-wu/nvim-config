@@ -17,6 +17,16 @@ return require('packer').startup(function(use)
 
 	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
+    use('hrsh7th/nvim-cmp', {
+        requires = {
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-path" },
+            { "saadparwaiz1/cmp_luasnip" },
+            { "hrsh7th/cmp-nvim-lsp" },
+        },
+        lazy = false,
+    })
+
 	use({
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v3.x',
@@ -26,7 +36,7 @@ return require('packer').startup(function(use)
 			{ 'neovim/nvim-lspconfig' },
 			{ 'hrsh7th/nvim-cmp' },
 			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'L3MON4D3/LuaSnip' },
+            { 'L3MON4D3/LuaSnip' },
 		}
 	})
 
@@ -57,4 +67,23 @@ return require('packer').startup(function(use)
 			require('Comment').setup()
 		end,
 	})
+
+    use({
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { {"nvim-lua/plenary.nvim"} }
+    })
+
+    use({
+        "L3MON4D3/LuaSnip",
+        requires = { { "rafamadriz/friendly-snippets" } },
+        tag = "v2.*",
+        run = "make install_jsregexp",
+    })
+
+    use({
+        "saadparwaiz1/cmp_luasnip",
+        requires = { { "L3MON4D3/LuaSnip" } },
+    })
 end)
+
