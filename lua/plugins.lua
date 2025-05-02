@@ -47,14 +47,6 @@ return require('packer').startup(function(use)
 	})
 
 	use({
-		'folke/noice.nvim',
-		requires = {
-			{ 'MunifTanjim/nui.nvim' },
-			{ 'rcarriga/nvim-notify' },
-		},
-	})
-
-	use({
 		'kdheepak/lazygit.nvim',
 		requires = {
 			'nvim-lua/plenary.nvim',
