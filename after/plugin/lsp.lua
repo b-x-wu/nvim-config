@@ -6,22 +6,10 @@ local masonconfig = require("mason-lspconfig")
 mason.setup()
 
 masonconfig.setup({
-	ensure_installed = { "ts_ls", "eslint", "lua_ls", "tailwindcss", "emmet_ls" }
+    ensure_installed = { "eslint", "lua_ls", "tailwindcss", "emmet_ls", "rust_analyzer", "pyright" }
 })
 
-lspconfig.pylsp.setup({
-    settings = {
-        pylsp = {
-            plugins = {
-                pycodestyle = {
-                    ignore = {'W391'},
-                },
-            },
-        },
-    },
-})
-
-lspconfig.ts_ls.setup({})
+lspconfig.pyright.setup({})
 
 lspconfig.eslint.setup({})
 

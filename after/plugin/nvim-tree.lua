@@ -1,8 +1,6 @@
 local nvim_tree = require('nvim-tree')
 local api = require('nvim-tree.api')
 
-local Event = api.events.Event
-
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
